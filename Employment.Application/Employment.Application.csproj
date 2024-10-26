@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Features\Employment\**" />
+    <EmbeddedResource Remove="Features\Employment\**" />
+    <None Remove="Features\Employment\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Employment.Domain\Employment.Domain.csproj" />
+    <ProjectReference Include="..\Employment.Persistence\Employment.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\VacancySearchandApplication\Commands\" />
+    <Folder Include="Features\VacancySearchandApplication\DTOs\" />
+    <Folder Include="Features\VacancySearchandApplication\MappingConfig\" />
+    <Folder Include="Features\VacancySearchandApplication\Queries\" />
+    <Folder Include="Features\VacancySearchandApplication\Specifications\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.10.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+  </ItemGroup>
+
+</Project>

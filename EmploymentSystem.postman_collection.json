@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "6e172a31-7dd6-4ce6-95b4-40224232247a",
+		"name": "EmploymentSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "26545082"
+	},
+	"item": [
+		{
+			"name": "Employer",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/api/auth/login-employer?Email=mohamedmohanad@gmail.com&Password=P@ssw0rd",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login-employer"
+							],
+							"query": [
+								{
+									"key": "Email",
+									"value": "mohamedmohanad@gmail.com"
+								},
+								{
+									"key": "Password",
+									"value": "P@ssw0rd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register-employer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FullName\": \"Mohamed Mohanad\",\r\n    \"Email\": \"mohamedmohanad@gmail.com\",\r\n    \"UserName\": \"honda\",\r\n    \"PhoneNumber\": \"01143475759\",\r\n    \"Password\": \"P@ssw0rd\",\r\n    \"CompanyId\": 1  //1 paysky, 2 Microsoft 3 Google\r\n}"
+						},
+						"url": "{{base-url}}/api/auth/register-employer"
+					},
+					"response": []
+				},
+				{
+					"name": "create-vacancy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI3OGFlN2JmYS1iMjIxLTQyYzYtZmJmYS0wOGRjZjVmYThhMmIiLCJPdGhlcklkIjoiNTRiYzFkYTMtYjBlMS00NjBmLWNlYmQtMDhkY2Y1ZmE4YTNjIiwiZW1haWwiOiJtb2hhbWVkbW9oYW5hZEBnbWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6ImhvbmRhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiRW1wbG95ZXIiLCJleHAiOjE3Mjk5ODEyOTYsImlzcyI6IkVtcGxveW1lbnQiLCJhdWQiOiJFbXBsb3ltZW50In0.fGV4eFMrO1K7uHy_fCD0l8uDvGS0R4J-KgUBKi1NwYY"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer your_access_token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Vacancy Title\",\r\n    \"Description\": \"Vacancy Description\",\r\n    \"Location\": \"City, Country\",\r\n    \"MaxApplications\": 1,\r\n    \"ExpiryDate\": \"2024-10-27T00:08:00\",\r\n    \"Status\": \"Active\"\r\n}"
+						},
+						"url": "{{base-url}}/api/vacancy/create"
+					},
+					"response": []
+				},
+				{
+					"name": "get-vacancies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI3OGFlN2JmYS1iMjIxLTQyYzYtZmJmYS0wOGRjZjVmYThhMmIiLCJPdGhlcklkIjoiNTRiYzFkYTMtYjBlMS00NjBmLWNlYmQtMDhkY2Y1ZmE4YTNjIiwiZW1haWwiOiJtb2hhbWVkbW9oYW5hZEBnbWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6ImhvbmRhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiRW1wbG95ZXIiLCJleHAiOjE3Mjk5ODEyOTYsImlzcyI6IkVtcGxveW1lbnQiLCJhdWQiOiJFbXBsb3ltZW50In0.fGV4eFMrO1K7uHy_fCD0l8uDvGS0R4J-KgUBKi1NwYY"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer your_access_token"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/api/vacancy/employer-get-vacancies?Search=&PageIndex=1&PageSize=20",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"vacancy",
+								"employer-get-vacancies"
+							],
+							"query": [
+								{
+									"key": "Search",
+									"value": ""
+								},
+								{
+									"key": "PageIndex",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-vacancy-applicants",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI3OGFlN2JmYS1iMjIxLTQyYzYtZmJmYS0wOGRjZjVmYThhMmIiLCJPdGhlcklkIjoiNTRiYzFkYTMtYjBlMS00NjBmLWNlYmQtMDhkY2Y1ZmE4YTNjIiwiZW1haWwiOiJtb2hhbWVkbW9oYW5hZEBnbWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6ImhvbmRhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiRW1wbG95ZXIiLCJleHAiOjE3Mjk5ODEyOTYsImlzcyI6IkVtcGxveW1lbnQiLCJhdWQiOiJFbXBsb3ltZW50In0.fGV4eFMrO1K7uHy_fCD0l8uDvGS0R4J-KgUBKi1NwYY"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer your_access_token"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/api/vacancy/get-applicants?VacancyId=9f6c28ff-a5a8-4318-2818-08dcf5fc22ae&PageIndex=1&PageSize=20",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"vacancy",
+								"get-applicants"
+							],
+							"query": [
+								{
+									"key": "VacancyId",
+									"value": "9f6c28ff-a5a8-4318-2818-08dcf5fc22ae"
+								},
+								{
+									"key": "PageIndex",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-vacancy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI3OGFlN2JmYS1iMjIxLTQyYzYtZmJmYS0wOGRjZjVmYThhMmIiLCJPdGhlcklkIjoiNTRiYzFkYTMtYjBlMS00NjBmLWNlYmQtMDhkY2Y1ZmE4YTNjIiwiZW1haWwiOiJtb2hhbWVkbW9oYW5hZEBnbWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6ImhvbmRhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiRW1wbG95ZXIiLCJleHAiOjE3Mjk5ODEyOTYsImlzcyI6IkVtcGxveW1lbnQiLCJhdWQiOiJFbXBsb3ltZW50In0.fGV4eFMrO1K7uHy_fCD0l8uDvGS0R4J-KgUBKi1NwYY"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer your_access_token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"9f6c28ff-a5a8-4318-2818-08dcf5fc22ae\",\r\n    //u can send just the specific prop to updated not all this\r\n    \"Title\": \"Updated Vacancy Title\",\r\n    \"Description\": \"Updated Vacancy Description\",\r\n    \"Location\": \"Updated City, Country\",\r\n    \"MaxApplications\": 15,\r\n    \"ExpiryDate\": \"2025-01-01T00:00:00\"\r\n}"
+						},
+						"url": "{{base-url}}/api/vacancy/update"
+					},
+					"response": []
+				},
+				{
+					"name": "de-active-vacancy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI3OGFlN2JmYS1iMjIxLTQyYzYtZmJmYS0wOGRjZjVmYThhMmIiLCJPdGhlcklkIjoiNTRiYzFkYTMtYjBlMS00NjBmLWNlYmQtMDhkY2Y1ZmE4YTNjIiwiZW1haWwiOiJtb2hhbWVkbW9oYW5hZEBnbWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6ImhvbmRhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiRW1wbG95ZXIiLCJleHAiOjE3Mjk5ODEyOTYsImlzcyI6IkVtcGxveW1lbnQiLCJhdWQiOiJFbXBsb3ltZW50In0.fGV4eFMrO1K7uHy_fCD0l8uDvGS0R4J-KgUBKi1NwYY"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer your_access_token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"9f6c28ff-a5a8-4318-2818-08dcf5fc22ae\"\r\n}"
+						},
+						"url": "{{base-url}}/api/vacancy/deActive"
+					},
+					"response": []
+				},
+				{
+					"name": "delete-vacancy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI3OGFlN2JmYS1iMjIxLTQyYzYtZmJmYS0wOGRjZjVmYThhMmIiLCJPdGhlcklkIjoiNTRiYzFkYTMtYjBlMS00NjBmLWNlYmQtMDhkY2Y1ZmE4YTNjIiwiZW1haWwiOiJtb2hhbWVkbW9oYW5hZEBnbWFpbC5jb20iLCJ1bmlxdWVfbmFtZSI6ImhvbmRhIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiRW1wbG95ZXIiLCJleHAiOjE3Mjk5ODEyOTYsImlzcyI6IkVtcGxveW1lbnQiLCJhdWQiOiJFbXBsb3ltZW50In0.fGV4eFMrO1K7uHy_fCD0l8uDvGS0R4J-KgUBKi1NwYY"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer your_access_token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"9f6c28ff-a5a8-4318-2818-08dcf5fc22ae\"\r\n}"
+						},
+						"url": "{{base-url}}/api/vacancy/delete"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Applicant",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/api/auth/login-applicant?Email=ahmedmostafa@gmail.com&Password=P@ssw0rd",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login-applicant"
+							],
+							"query": [
+								{
+									"key": "Email",
+									"value": "ahmedmostafa@gmail.com"
+								},
+								{
+									"key": "Password",
+									"value": "P@ssw0rd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register-applicant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"FullName\": \"Ahmed Mostafa\",\r\n    \"Email\": \"ahmedmostafa@gmail.com\",\r\n    \"UserName\": \"ahmedmostafa\",\r\n    \"PhoneNumber\": \"01143475779\",\r\n    \"Password\": \"P@ssw0rd\",\r\n    \"ResumeUrl\": \"http://example.com/resume.pdf\"\r\n}"
+						},
+						"url": "{{base-url}}/api/auth/register-applicant"
+					},
+					"response": []
+				},
+				{
+					"name": "get-vacancies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIzOWE2MmRiNi1kZGMyLTQwYmItZmJmYi0wOGRjZjVmYThhMmIiLCJPdGhlcklkIjoiZjdkMDBkYzMtNDc5ZS00M2M1LWQ2NTktMDhkY2Y1ZmFkNGZmIiwiZW1haWwiOiJhaG1lZG1vc3RhZmFAZ21haWwuY29tIiwidW5pcXVlX25hbWUiOiJhaG1lZG1vc3RhZmEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBcHBsaWNhbnQiLCJleHAiOjE3Mjk5ODEyNDYsImlzcyI6IkVtcGxveW1lbnQiLCJhdWQiOiJFbXBsb3ltZW50In0.y6nQpyi-pjl_Zzqq3HVZ_mjmqKHdL8IE3D_mv4WWmsA"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer your_access_token"
+							}
+						],
+						"url": {
+							"raw": "{{base-url}}/api/vacancy/applicant-get-vacancies?Search=&PageIndex=1&PageSize=20",
+							"host": [
+								"{{base-url}}"
+							],
+							"path": [
+								"api",
+								"vacancy",
+								"applicant-get-vacancies"
+							],
+							"query": [
+								{
+									"key": "Search",
+									"value": ""
+								},
+								{
+									"key": "PageIndex",
+									"value": "1"
+								},
+								{
+									"key": "PageSize",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "apply-vacancy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIzOWE2MmRiNi1kZGMyLTQwYmItZmJmYi0wOGRjZjVmYThhMmIiLCJPdGhlcklkIjoiZjdkMDBkYzMtNDc5ZS00M2M1LWQ2NTktMDhkY2Y1ZmFkNGZmIiwiZW1haWwiOiJhaG1lZG1vc3RhZmFAZ21haWwuY29tIiwidW5pcXVlX25hbWUiOiJhaG1lZG1vc3RhZmEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBcHBsaWNhbnQiLCJleHAiOjE3Mjk5ODEyNDYsImlzcyI6IkVtcGxveW1lbnQiLCJhdWQiOiJFbXBsb3ltZW50In0.y6nQpyi-pjl_Zzqq3HVZ_mjmqKHdL8IE3D_mv4WWmsA"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer your_access_token"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"VacancyId\": \"9F6C28FF-A5A8-4318-2818-08DCF5FC22AE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base-url}}/api/vacancy/apply-vacancy"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base-url",
+			"value": "https://localhost:7268"
+		}
+	]
+}
